@@ -1,148 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="Tb0jAB_pv4OrFR9I1vU1jYvIe0JRH0jbaF4i4NzOJ9A" />
-<title>PDFMate — PDF Tools</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- KEEP YOUR REAL GOOGLE SEARCH CONSOLE VERIFICATION TAG HERE. -->
+<title>PDFMate — Your PDF Workspace</title>
+<meta name="description" content="PDFMate modern browser PDF workspace">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:#252525;background:#fff}
-header{height:70px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:#fff;z-index:5}
-.logo{font-size:25px;font-weight:800;color:#e5322d}.logo span{color:#222}
-nav{display:flex;gap:24px;font-size:14px;color:#444}nav a{cursor:pointer}
-.hero{text-align:center;padding:70px 20px 45px;background:linear-gradient(180deg,#fff 0,#fff8f7 100%)}
-.hero h1{font-size:42px;margin:0 0 14px;font-weight:800}.hero p{color:#666;margin:0 auto 30px;max-width:650px;line-height:1.6}
-.tools{max-width:1050px;margin:auto;padding:20px 20px 70px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{border:1px solid #e9e9e9;border-radius:14px;padding:28px;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.04);transition:.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.icon{width:50px;height:50px;border-radius:12px;background:#fff0ef;color:#e5322d;display:grid;place-items:center;font-size:25px;margin-bottom:16px}
-.card h2{margin:0 0 8px;font-size:20px}.card p{color:#777;font-size:14px;line-height:1.5}.btn{border:0;background:#e5322d;color:white;padding:12px 22px;border-radius:7px;font-weight:700;cursor:pointer}.btn:hover{background:#c92520}
-.drop{margin-top:18px;border:2px dashed #ddd;border-radius:12px;padding:30px;text-align:center;color:#777;cursor:pointer;background:#fafafa}.drop.drag{border-color:#e5322d;background:#fff4f3}
-#viewer{display:none;max-width:1100px;margin:30px auto 70px;padding:0 20px}
-.viewerbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:15px}
-#pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
-.page{background:#f7f7f7;border:1px solid #ddd;border-radius:10px;padding:10px;text-align:center}
-.page canvas{max-width:100%;height:auto;background:white;box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.page small{display:block;margin-top:8px;color:#666}
-.mergeBox{display:none;max-width:900px;margin:30px auto 70px;padding:0 20px}
-.mergeList{display:grid;gap:10px;margin:15px 0}.fileRow{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;border:1px solid #ddd;border-radius:9px;background:#fff}.remove{border:0;background:#ffeceb;color:#d32f2f;padding:7px 10px;border-radius:6px;cursor:pointer}
-footer{text-align:center;border-top:1px solid #eee;padding:28px;color:#888;font-size:13px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:32px}nav{display:none}}
+*{box-sizing:border-box}body{margin:0;background:#070912;color:#f5f7ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden;background-image:radial-gradient(circle at 15% 5%,#3d2f7d55,transparent 30%),radial-gradient(circle at 90% 15%,#126e8750,transparent 28%)}button{font:inherit;cursor:pointer;color:inherit;border:0}.glass{background:#ffffff0b;border:1px solid #ffffff18;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 20px 60px #0006}
+header{position:fixed;z-index:30;top:12px;left:12px;right:12px;height:58px;border-radius:20px;padding:0 18px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900}.logo span{opacity:.4}.status{font-size:10px;color:#8e99ae}.creator{position:absolute;left:50%;transform:translateX(-50%);bottom:6px;font-size:8px;color:#707b91;white-space:nowrap;letter-spacing:.15px}
+main{min-height:100vh;padding:110px 18px 130px;display:flex;justify-content:center}.home{text-align:center;max-width:900px}.badge{display:inline-block;border:1px solid #ffffff16;background:#ffffff08;border-radius:999px;padding:7px 12px;font-size:10px;color:#aeb8cb}h1{font-size:clamp(42px,8vw,78px);line-height:.96;letter-spacing:-3px;margin:20px 0 15px}.sub{color:#929db2;max-width:620px;line-height:1.7;font-size:14px;margin:auto}.drop{margin:42px auto 0;min-height:180px;border-radius:30px;display:grid;place-items:center;padding:25px}.drop b{font-size:18px}.drop p{color:#7f899d;font-size:12px}
+.dock{position:fixed;z-index:50;bottom:12px;left:50%;transform:translateX(-50%);width:min(1000px,calc(100% - 14px));padding:9px;border-radius:26px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}.dock::-webkit-scrollbar{display:none}.dock-item{min-width:61px;height:61px;border-radius:19px;background:#ffffff08;border:1px solid #ffffff12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:.2s}.dock-item:hover{transform:translateY(-5px) scale(1.04);background:#ffffff14}.dock-item:active{transform:scale(.84)}.dock-item.active{box-shadow:0 0 0 1px #8176ff88,0 0 28px #7163ff44}.dock-icon{font-size:22px}.dock-label{font-size:8px;color:#929db1;white-space:nowrap}
+#toast{position:fixed;z-index:80;top:84px;left:50%;transform:translate(-50%,-10px);opacity:0;padding:9px 15px;border-radius:999px;background:#111522ee;border:1px solid #ffffff18;font-size:12px;transition:.2s}#toast.show{opacity:1;transform:translate(-50%,0)}
+.modal{display:none;position:fixed;z-index:70;inset:0;background:#02040bd9;backdrop-filter:blur(14px);padding:78px 10px 92px;align-items:center;justify-content:center}.modal.show{display:flex}.panel{width:min(1050px,100%);max-height:calc(100vh - 170px);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}.head{padding:15px 17px;border-bottom:1px solid #ffffff12;display:flex;justify-content:space-between;align-items:center}.title{font-weight:800}.small{font-size:10px;color:#7e899d;margin-top:3px}.close{width:36px;height:36px;border-radius:13px;background:#ffffff0b;font-size:20px}.body{padding:16px;overflow:auto}.card{max-width:620px;margin:10px auto;padding:27px;border-radius:25px;text-align:center;background:#ffffff08;border:1px solid #ffffff12}.card h2{margin:7px 0}.card p{color:#929db1;font-size:13px;line-height:1.6}.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:19px}.btn{padding:11px 16px;border-radius:14px;background:#ffffff0c;border:1px solid #ffffff12;font-weight:700}.primary{background:linear-gradient(135deg,#756aff,#4d9cff)}.hidden{display:none!important}
+.reader{background:#10141f;border-radius:22px;padding:12px}.pages{display:flex;flex-direction:column;align-items:center;gap:20px}.page{width:min(820px,100%);text-align:center}.page small{display:block;color:#68748b;font-size:9px;margin-bottom:7px}.page canvas{display:block;width:100%;height:auto;background:#fff;box-shadow:0 15px 40px #0008}.zoom{display:flex;justify-content:center;gap:8px;margin-bottom:12px}.zoom span{min-width:50px;text-align:center;color:#8994a9;font-size:11px;padding-top:9px}
+.file{display:flex;justify-content:space-between;gap:10px;padding:11px;border-radius:14px;background:#ffffff07;border:1px solid #ffffff0e;margin:7px 0;font-size:12px}.file input{width:18px;height:18px}
+@media(max-width:650px){.status{display:none}.creator{font-size:7px;bottom:5px}.dock{justify-content:flex-start}.dock-item{min-width:57px;height:57px}.panel{max-height:calc(100vh - 155px)}.card{padding:22px 14px}.actions .btn{width:100%}}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">PDF<span>Mate</span></div>
-  <nav><a onclick="scrollToTools()">All PDF tools</a><a onclick="openMerge()">Merge PDF</a><a onclick="openViewer()">Open PDF</a></nav>
-</header>
+<header class="glass"><div class="logo">PDF<span>Mate</span></div><div class="status">USER CONTROLLED WORKSPACE</div><div class="creator">by Sunil Kumar Saini</div></header>
+<main><section class="home">
+<div class="badge">PRIVATE • SIMPLE • NO AUTO ACTIONS</div>
+<h1>Your PDF.<br><span style="opacity:.42">Your choice.</span></h1>
+<p class="sub">Tap a tool. First see its name and choose what you want. PDFMate never opens or downloads a file without your confirmation.</p>
+<div class="drop glass"><div><div style="font-size:44px">✦</div><b>Everything stays in your control</b><p>Choose a tool from the iPhone-style dock below.</p></div></div>
+</section></main>
+<nav class="dock glass" id="dock"></nav><div id="toast"></div>
+<div class="modal" id="modal"><div class="panel glass"><div class="head"><div><div class="title" id="mt">PDFMate</div><div class="small" id="ms"></div></div><button class="close" onclick="closeModal()">×</button></div><div class="body" id="mb"></div></div></div>
 
-<section class="hero">
-  <h1>Every tool you need to work with PDFs</h1>
-  <p>Open and merge your PDF files quickly in your browser. Your files stay on your device while you work.</p>
-</section>
-
-<section class="tools" id="tools">
-  <div class="grid">
-    <div class="card">
-      <div class="icon">📄</div><h2>Open PDF</h2>
-      <p>Upload a PDF and view its pages directly in your browser.</p>
-      <button class="btn" onclick="document.getElementById('openInput').click()">Select PDF</button>
-      <input id="openInput" type="file" accept="application/pdf" hidden>
-      <div class="drop" id="openDrop">or drag & drop a PDF here</div>
-    </div>
-    <div class="card">
-      <div class="icon">🔗</div><h2>Merge PDF</h2>
-      <p>Combine multiple PDF files in the order you choose and download one PDF.</p>
-      <button class="btn" onclick="document.getElementById('mergeInput').click()">Select PDFs</button>
-      <input id="mergeInput" type="file" accept="application/pdf" multiple hidden>
-      <div class="drop" id="mergeDrop">or drag & drop multiple PDFs here</div>
-    </div>
-  </div>
-</section>
-
-<section id="viewer">
-  <div class="viewerbar"><h2 id="viewerTitle">PDF Preview</h2><button class="btn" onclick="closeViewer()">Close</button></div>
-  <div id="pages"></div>
-</section>
-
-<section class="mergeBox" id="mergeBox">
-  <div class="viewerbar"><h2>Merge PDF</h2><button class="btn" onclick="closeMerge()">Close</button></div>
-  <p style="color:#777">Arrange the files, then merge them into one PDF.</p>
-  <div class="mergeList" id="mergeList"></div>
-  <button class="btn" onclick="mergePDFs()">Merge & Download PDF</button>
-</section>
-
-<footer>PDFMate © 2026 — Simple PDF tools for everyone</footer>
-
+<input id="file" class="hidden" type="file" accept="application/pdf">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
 <script>
-let pdfjsLib;
-(async()=>{pdfjsLib=await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"); pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";})();
-
-const $=id=>document.getElementById(id);
-function scrollToTools(){ $("tools").scrollIntoView({behavior:"smooth"}); }
-function openViewer(){ $("openInput").click(); }
-function openMerge(){ $("mergeInput").click(); }
-
-$("openInput").addEventListener("change",e=>{if(e.target.files[0]) showPDF(e.target.files[0])});
-$("mergeInput").addEventListener("change",e=>{if(e.target.files.length) showMerge([...e.target.files])});
-
-function setupDrop(el, handler){
-  el.addEventListener("dragover",e=>{e.preventDefault();el.classList.add("drag")});
-  el.addEventListener("dragleave",()=>el.classList.remove("drag"));
-  el.addEventListener("drop",e=>{e.preventDefault();el.classList.remove("drag");handler([...e.dataTransfer.files])});
+let pdfjsLib,selectedFile=null,currentPdf=null,zoom=1;
+(async()=>{pdfjsLib=await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs");pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs"})();
+const tools=[["open","📄","Open PDF"],["merge","🔗","Merge PDF"],["split","✂️","Split PDF"],["rotate","↻","Rotate PDF"],["delete","🗑️","Delete Pages"],["reorder","↕️","Reorder Pages"],["jpg","🖼️","JPG → PDF"],["pdfjpg","🌄","PDF → JPG"],["compress","📦","Compress PDF"],["protect","🔒","Protect PDF"],["unlock","🔓","Unlock PDF"]];
+const dock=document.getElementById("dock");
+tools.forEach(t=>{let b=document.createElement("button");b.className="dock-item";b.innerHTML=`<span class="dock-icon">${t[1]}</span><span class="dock-label">${t[2]}</span>`;b.onclick=()=>tool(t,b);dock.appendChild(b)});
+function toast(x){let t=document.getElementById("toast");t.textContent=x;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),1100)}
+function modal(title,sub,html){document.getElementById("mt").textContent=title;document.getElementById("ms").textContent=sub;document.getElementById("mb").innerHTML=html;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show");document.querySelectorAll(".dock-item").forEach(x=>x.classList.remove("active"))}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function tool(t,b){document.querySelectorAll(".dock-item").forEach(x=>x.classList.remove("active"));b.classList.add("active");toast(t[2]);setTimeout(()=>ask(t[0],t[2]),180)}
+function ask(id,name){
+ if(id==="protect"||id==="unlock"){modal(name,"Feature status",`<div class="card"><h2>Coming soon</h2><p>A real PDF encryption engine is required for this feature. PDFMate will not fake it.</p><div class="actions"><button class="btn" onclick="closeModal()">Close</button></div></div>`);return}
+ modal(name,"Choose what you want to do",`<div class="card"><div style="font-size:42px">✦</div><h2>${name}</h2><p><b>No automatic action.</b><br>First choose whether you want to open/choose a file, download an existing result, or cancel.</p><div class="actions"><button class="btn primary" onclick="chooseFile('${id}')">Open / Choose File</button><button class="btn" onclick="downloadChoice('${id}')">Download</button><button class="btn" onclick="closeModal()">Cancel</button></div></div>`)
 }
-setupDrop($("openDrop"),files=>{let f=files.find(x=>x.type==="application/pdf");if(f)showPDF(f)});
-setupDrop($("mergeDrop"),files=>{let fs=files.filter(x=>x.type==="application/pdf");if(fs.length)showMerge(fs)});
-
-async function showPDF(file){
-  $("viewer").style.display="block"; $("mergeBox").style.display="none"; $("pages").innerHTML="";
-  $("viewerTitle").textContent="PDF Preview — "+file.name;
-  $("viewer").scrollIntoView({behavior:"smooth"});
-  try{
-    const data=await file.arrayBuffer();
-    const pdf=await pdfjsLib.getDocument({data}).promise;
-    for(let i=1;i<=pdf.numPages;i++){
-      const page=await pdf.getPage(i), scale=1.15, vp=page.getViewport({scale});
-      const wrap=document.createElement("div");wrap.className="page";
-      const canvas=document.createElement("canvas");canvas.width=vp.width;canvas.height=vp.height;
-      wrap.appendChild(canvas);const s=document.createElement("small");s.textContent="Page "+i;wrap.appendChild(s);$("pages").appendChild(wrap);
-      await page.render({canvasContext:canvas.getContext("2d"),viewport:vp}).promise;
-    }
-  }catch(e){$("pages").innerHTML="<p>Could not open this PDF.</p>";}
+function chooseFile(id){let f=document.getElementById("file");f.value="";f.onchange=()=>{if(f.files[0]){selectedFile=f.files[0];openPreview(id,f.files[0])}};f.click()}
+function downloadChoice(id){modal(document.getElementById("mt").textContent,"Download choice",`<div class="card"><h2>Download?</h2><p>There is no processed result yet. Choose a file first, then PDFMate will show a confirmation before downloading.</p><div class="actions"><button class="btn primary" onclick="chooseFile('${id}')">Choose File</button><button class="btn" onclick="closeModal()">Cancel</button></div></div>`)}
+async function openPreview(id,file){
+ if(!pdfjsLib){toast("PDF engine loading…");setTimeout(()=>openPreview(id,file),500);return}
+ if(id!=="open"){modal(document.getElementById("mt").textContent,"File selected — choose next step",`<div class="card"><h2>${esc(file.name)}</h2><p>File selected. Nothing has been downloaded.</p><div class="actions"><button class="btn primary" onclick="previewPDF('${id}')">Open Preview</button><button class="btn" onclick="confirmDownloadOriginal()">Download?</button><button class="btn" onclick="closeModal()">Cancel</button></div></div>`);return}
+ previewPDF(id)
 }
-let mergeFiles=[];
-function showMerge(files){mergeFiles=files;renderMerge();$("mergeBox").style.display="block";$("viewer").style.display="none";$("mergeBox").scrollIntoView({behavior:"smooth"})}
-function renderMerge(){
-  $("mergeList").innerHTML="";
-  mergeFiles.forEach((f,i)=>{
-    const row=document.createElement("div");row.className="fileRow";
-    row.innerHTML=`<span><b>${i+1}.</b> ${escapeHtml(f.name)} <small>(${(f.size/1024/1024).toFixed(2)} MB)</small></span><button class="remove" onclick="removeFile(${i})">Remove</button>`;
-    $("mergeList").appendChild(row);
-  });
+async function previewPDF(id){
+ try{let data=await selectedFile.arrayBuffer();currentPdf=await pdfjsLib.getDocument({data}).promise;zoom=1;renderPages()}catch(e){modal("PDF","Could not open",`<div class="card"><p>This PDF may be password-protected or unsupported.</p><button class="btn" onclick="closeModal()">Close</button></div>`)}
 }
-function removeFile(i){mergeFiles.splice(i,1);renderMerge()}
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-
-async function mergePDFs(){
-  if(mergeFiles.length<2){alert("Please select at least 2 PDF files.");return;}
-  const {PDFDocument}=await import("https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm");
-  const out=await PDFDocument.create();
-  for(const file of mergeFiles){
-    const src=await PDFDocument.load(await file.arrayBuffer());
-    const copied=await out.copyPages(src,src.getPageIndices());
-    copied.forEach(p=>out.addPage(p));
-  }
-  const bytes=await out.save();
-  const blob=new Blob([bytes],{type:"application/pdf"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="merged.pdf";a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+async function renderPages(){
+ modal(document.getElementById("mt").textContent,"Single-column preview • page 1, then page 2, then next",`<div class="zoom"><button class="btn" onclick="setZoom(-.1)">−</button><span id="zv">100%</span><button class="btn" onclick="setZoom(.1)">+</button></div><div class="reader"><div class="pages" id="pages"></div></div><div class="actions"><button class="btn primary" onclick="confirmDownloadOriginal()">Download PDF?</button><button class="btn" onclick="closeModal()">Done</button></div>`);
+ let box=document.getElementById("pages");
+ for(let i=1;i<=currentPdf.numPages;i++){let p=await currentPdf.getPage(i),base=p.getViewport({scale:1}),w=box.clientWidth||800,scale=Math.min((w-4)/base.width,1)*zoom,v=p.getViewport({scale}),wrap=document.createElement("div");wrap.className="page";wrap.innerHTML=`<small>PAGE ${i}</small><canvas></canvas>`;box.appendChild(wrap);let c=wrap.querySelector("canvas"),d=devicePixelRatio||1;c.width=v.width*d;c.height=v.height*d;c.style.width=v.width+"px";c.style.height=v.height+"px";await p.render({canvasContext:c.getContext("2d"),viewport:p.getViewport({scale:scale*d})}).promise}
 }
-function closeViewer(){$("viewer").style.display="none"}
-function closeMerge(){$("mergeBox").style.display="none"}
+function setZoom(x){zoom=Math.max(.4,Math.min(1.5,zoom+x));let z=document.getElementById("zv");if(z)z.textContent=Math.round(zoom*100)+"%";if(currentPdf)renderPages()}
+function confirmDownloadOriginal(){if(!selectedFile)return;modal("Download PDF?","Confirmation required",`<div class="card"><h2>Are you sure?</h2><p>PDFMate will save <b>${esc(selectedFile.name)}</b> only after you confirm.</p><div class="actions"><button class="btn primary" onclick="downloadOriginal()">Yes, Download</button><button class="btn" onclick="closeModal()">No, Cancel</button></div></div>`)}
+function downloadOriginal(){let a=document.createElement("a");a.href=URL.createObjectURL(selectedFile);a.download=selectedFile.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("Download started");setTimeout(closeModal,500)}
 </script>
-</body>
-</html>
+</body></html>
